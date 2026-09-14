@@ -25,6 +25,7 @@
 
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  html, body{max-width:100%; overflow-x:hidden;}
   body{
     margin:0;
     background:var(--color-bg);
@@ -70,7 +71,13 @@
   }
   .header-row{
     display:flex; align-items:center; justify-content:space-between;
-    height:78px;
+    min-height:78px;
+    gap:12px;
+    flex-wrap:nowrap;
+  }
+  .brand{min-width:0;}
+  .brand-name, .brand-tag{
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
   }
   .brand{
     display:flex; flex-direction:column; gap:2px;
@@ -138,11 +145,23 @@
     color:var(--color-ink);
   }
   .mobile-panel .mobile-actions{padding:16px 28px; display:flex; flex-direction:column; gap:10px;}
+  .mobile-panel .mobile-actions .btn{width:100%;}
 
   @media (max-width:900px){
-    nav.primary-nav, .header-actions .btn-ghost{display:none;}
-    .burger{display:block;}
+    nav.primary-nav,
+    .header-actions .btn-ghost,
+    .header-actions .btn-primary,
+    .header-actions .phone-link{display:none;}
+    .header-row{min-height:66px;}
+    .burger{display:block; flex-shrink:0;}
     .mobile-panel{display:flex;}
+    .brand-name{font-size:1rem;}
+    .brand-tag{font-size:0.68rem;}
+  }
+  @media (max-width:380px){
+    .wrap{padding:0 16px;}
+    .brand-name{font-size:0.92rem;}
+    .brand-tag{display:none;}
   }
   @media (min-width:901px){
     .mobile-panel{display:none !important;}
