@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Art Déco Yohann Gouron — Peinture &amp; décoration d'intérieur à Burgnac</title>
+<meta name="description" content="Art Déco Yohann Gouron réalise vos travaux de peinture et de décoration d'intérieur à Burgnac (87800). Devis, conseils et finitions soignées.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-bg: #F3EEE4;
+    --color-panel: #EAE2D2;
+    --color-ink: #29241F;
+    --color-ink-soft: #6A5F51;
+    --color-clay: #AD4A2C;
+    --color-clay-dark: #8E3B22;
+    --color-olive: #5C6944;
+    --color-ochre: #C7922E;
+    --color-border: #DCD2BC;
+    --radius-card: 4px;
+    --max-w: 1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--color-bg);
+    color:var(--color-ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    line-height:1.12;
+    margin:0;
+    color:var(--color-ink);
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;}
+
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:0 28px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  :focus-visible{outline:2px solid var(--color-clay);outline-offset:3px;}
+
+  /* -------- Swatch motif (recurring device, echoes a paint colour chart) -------- */
+  .swatches{display:flex;gap:7px;align-items:center;}
+  .swatches span{
+    width:9px;height:9px;border-radius:50%;display:inline-block;
+  }
+  .swatches span:nth-child(1){background:var(--color-clay);}
+  .swatches span:nth-child(2){background:var(--color-ochre);}
+  .swatches span:nth-child(3){background:var(--color-olive);}
+
+  /* -------- Header -------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(243,238,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--color-border);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    height:78px;
+  }
+  .brand{
+    display:flex; flex-direction:column; gap:2px;
+    font-family:'Fraunces', serif;
+  }
+  .brand-name{font-size:1.05rem; font-weight:600; letter-spacing:0.01em;}
+  .brand-tag{font-size:0.72rem; color:var(--color-ink-soft); font-family:'Work Sans',sans-serif;}
+
+  nav.primary-nav{display:flex; align-items:center; gap:34px;}
+  nav.primary-nav a{
+    font-size:0.94rem; color:var(--color-ink-soft);
+    position:relative; padding:4px 0;
+    transition:color .2s ease;
+  }
+  nav.primary-nav a:hover{color:var(--color-ink);}
+  nav.primary-nav a::after{
+    content:""; position:absolute; left:0; right:100%; bottom:-2px; height:1px;
+    background:var(--color-clay); transition:right .25s ease;
+  }
+  nav.primary-nav a:hover::after{right:0;}
+
+  .header-actions{display:flex; align-items:center; gap:14px;}
+  .phone-link{
+    display:flex; align-items:center; gap:8px;
+    font-size:0.94rem; color:var(--color-ink);
+    white-space:nowrap;
+  }
+  .phone-link svg{width:16px;height:16px;flex-shrink:0;stroke:var(--color-clay);}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:11px 22px; font-size:0.92rem; font-weight:500;
+    border-radius:2px; border:1px solid transparent; cursor:pointer;
+    transition:background .2s ease, color .2s ease, border-color .2s ease, transform .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--color-clay); color:#FBF6EC;}
+  .btn-primary:hover{background:var(--color-clay-dark); transform:translateY(-1px);}
+  .btn-ghost{background:transparent; color:var(--color-ink); border-color:var(--color-ink);}
+  .btn-ghost:hover{background:var(--color-ink); color:var(--color-bg);}
+
+  .burger{
+    display:none; width:38px;height:38px; border:1px solid var(--color-border);
+    background:none; border-radius:2px; position:relative; cursor:pointer;
+  }
+  .burger span, .burger span::before, .burger span::after{
+    content:""; position:absolute; left:9px; right:9px; height:1.5px; background:var(--color-ink);
+    transition:transform .25s ease, opacity .2s ease;
+  }
+  .burger span{top:50%; transform:translateY(-50%);}
+  .burger span::before{top:-7px;}
+  .burger span::after{top:7px;}
+  .burger.is-open span{background:transparent;}
+  .burger.is-open span::before{transform:translateY(7px) rotate(45deg);}
+  .burger.is-open span::after{transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-panel{
+    display:none; flex-direction:column; gap:2px;
+    max-height:0; overflow:hidden; transition:max-height .3s ease;
+    border-top:1px solid var(--color-border);
+  }
+  .mobile-panel.is-open{max-height:420px;}
+  .mobile-panel a{
+    padding:16px 28px; font-size:1rem; border-bottom:1px solid var(--color-border);
+    color:var(--color-ink);
+  }
+  .mobile-panel .mobile-actions{padding:16px 28px; display:flex; flex-direction:column; gap:10px;}
+
+  @media (max-width:900px){
+    nav.primary-nav, .header-actions .btn-ghost{display:none;}
+    .burger{display:block;}
+    .mobile-panel{display:flex;}
+  }
+  @media (min-width:901px){
+    .mobile-panel{display:none !important;}
+  }
+
+  /* -------- Hero -------- */
+  .hero{padding:76px 0 88px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;
+  }
+  .hero-eyebrow{
+    font-size:0.86rem; color:var(--color-ink-soft); margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero h1{font-size:clamp(2.3rem, 4.4vw, 3.4rem); max-width:11ch;}
+  .hero-lede{
+    margin-top:22px; font-size:1.08rem; color:var(--color-ink-soft);
+    max-width:46ch; line-height:1.65;
+  }
+  .hero-actions{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+
+  .hero-art{position:relative; aspect-ratio:1/1; max-width:440px; margin-left:auto;}
+  .hero-art svg{width:100%; height:100%;}
+  .stroke-path{
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 1.6s cubic-bezier(.65,0,.35,1) .3s forwards;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .hero-fade{opacity:0; transform:translateY(10px); animation:fadeUp .7s ease .6s forwards;}
+  .hero-fade.delay{animation-delay:.8s;}
+  @keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .hero-art{max-width:300px; margin:0 auto;}
+    .hero{padding:44px 0 56px; text-align:left;}
+  }
+
+  /* -------- Section shell -------- */
+  section{padding:84px 0;}
+  .section-alt{background:var(--color-panel); border-top:1px solid var(--color-border); border-bottom:1px solid var(--color-border);}
+  .section-head{max-width:640px; margin-bottom:46px;}
+  .section-head .swatches{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(1.7rem, 2.8vw, 2.3rem);}
+  .section-head p{margin-top:14px; color:var(--color-ink-soft); font-size:1.02rem; max-width:56ch;}
+  @media (max-width:640px){ section{padding:56px 0;} }
+
+  /* -------- About -------- */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;}
+  .about-text p{font-size:1.06rem; color:var(--color-ink-soft); line-height:1.7;}
+  .about-text p + p{margin-top:16px;}
+  .about-fact{
+    border-left:2px solid var(--color-clay); padding-left:20px;
+  }
+  .about-fact dt{font-family:'Fraunces',serif; font-size:1.5rem; color:var(--color-ink);}
+  .about-fact dd{margin:4px 0 0; color:var(--color-ink-soft); font-size:0.92rem;}
+  .about-facts{display:flex; flex-direction:column; gap:26px;}
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* -------- Services -------- */
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--color-border);}
+  .service-card{
+    background:var(--color-bg); padding:40px; display:flex; flex-direction:column; gap:18px;
+    transition:background .25s ease;
+  }
+  .service-card:hover{background:var(--color-panel);}
+  .service-icon{width:42px;height:42px;}
+  .service-icon svg{width:100%;height:100%; stroke:var(--color-clay);}
+  .service-card h3{font-size:1.3rem;}
+  .service-card p{color:var(--color-ink-soft); font-size:0.98rem;}
+  @media (max-width:640px){ .services-grid{grid-template-columns:1fr;} }
+
+  /* -------- Infos pratiques -------- */
+  .infos-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--color-border);}
+  .infos-card{background:var(--color-bg); padding:34px;}
+  .infos-card h3{font-size:1rem; margin-bottom:16px; color:var(--color-ink-soft); font-weight:600; font-family:'Work Sans',sans-serif;}
+  .infos-card .value{font-size:1.05rem; margin-bottom:6px;}
+  .infos-card a.value:hover{color:var(--color-clay);}
+  .hours-row{display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--color-border); font-size:0.95rem;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-day{color:var(--color-ink-soft);}
+  @media (max-width:800px){ .infos-grid{grid-template-columns:1fr;} }
+
+  /* -------- Contact -------- */
+  .contact-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px;}
+  .contact-side h2{font-size:clamp(1.7rem,2.8vw,2.3rem); max-width:12ch;}
+  .contact-side p{margin-top:16px; color:var(--color-ink-soft); max-width:36ch;}
+  .contact-side .btn{margin-top:28px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-size:0.85rem; color:var(--color-ink-soft); margin-bottom:7px;}
+  .field input, .field textarea{
+    width:100%; padding:13px 14px; border:1px solid var(--color-border);
+    background:#FBF8F1; border-radius:2px; font-family:inherit; font-size:0.98rem; color:var(--color-ink);
+    transition:border-color .2s ease;
+  }
+  .field input:focus, .field textarea:focus{border-color:var(--color-clay); outline:none;}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .field-check{display:flex; gap:10px; align-items:flex-start; font-size:0.85rem; color:var(--color-ink-soft);}
+  .field-check input{width:16px;height:16px; margin-top:2px; accent-color:var(--color-clay);}
+  .form-note{margin-top:16px; font-size:0.8rem; color:var(--color-ink-soft); line-height:1.6;}
+  .form-note a{text-decoration:underline; text-underline-offset:2px;}
+  .confirm-msg{
+    display:none; margin-top:18px; padding:14px 16px; background:#F1EBDC;
+    border-left:2px solid var(--color-olive); font-size:0.92rem;
+  }
+  .confirm-msg.is-visible{display:block;}
+  @media (max-width:800px){
+    .contact-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+  }
+
+  /* -------- Footer -------- */
+  footer{background:var(--color-ink); color:#E7E0D2; padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:40px; padding-bottom:38px; border-bottom:1px solid rgba(231,224,210,0.15);}
+  footer h4{font-family:'Work Sans',sans-serif; font-size:0.85rem; color:#B7AC97; margin-bottom:14px; font-weight:600;}
+  footer .foot-brand{font-family:'Fraunces',serif; font-size:1.15rem; margin-bottom:10px;}
+  footer .foot-desc{font-size:0.92rem; color:#B7AC97; max-width:34ch; line-height:1.6;}
+  footer ul li{margin-bottom:9px; font-size:0.92rem;}
+  footer ul li a:hover{color:var(--color-ochre);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:0.8rem; color:#8B8071; flex-wrap:wrap; gap:10px;}
+  .foot-bottom a:hover{color:#E7E0D2;}
+  @media (max-width:700px){ .footer-grid{grid-template-columns:1fr; gap:30px;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a href="#accueil" class="brand">
+      <span class="brand-name">Art Déco Yohann Gouron</span>
+      <span class="brand-tag">Peinture &amp; décoration d'intérieur</span>
+    </a>
+
+    <nav class="primary-nav">
+      <a href="#apropos">À propos</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#infos">Infos pratiques</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="phone-link" href="tel:0603046885">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        06 03 04 68 85
+      </a>
+      <a class="btn btn-ghost" href="tel:0603046885">Appeler</a>
+      <a class="btn btn-primary" href="#contact">Prendre rendez-vous</a>
+      <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#apropos">À propos</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#infos">Infos pratiques</a>
+    <a href="#contact">Contact</a>
+    <div class="mobile-actions">
+      <a class="btn btn-ghost" href="tel:0603046885">Appeler · 06 03 04 68 85</a>
+      <a class="btn btn-primary" href="#contact">Prendre rendez-vous</a>
+    </div>
+  </div>
+</header>
+
+<main id="accueil">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="swatches"><span></span><span></span><span></span></span> Burgnac · Haute-Vienne</div>
+        <h1 class="hero-fade">Art Déco<br>Yohann Gouron</h1>
+        <p class="hero-lede hero-fade delay">Vous désirez refaire la peinture ou la décoration de votre habitat&nbsp;? Art Déco Yohann Gouron réalise pour vous vos travaux de peinture et de décoration d'intérieur. Faites-nous part de vos projets.</p>
+        <div class="hero-actions hero-fade delay">
+          <a class="btn btn-primary" href="tel:0603046885">Appeler · 06 03 04 68 85</a>
+          <a class="btn btn-ghost" href="#contact">Prendre rendez-vous</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none">
+          <path class="stroke-path" d="M40 320 C 120 260, 140 180, 90 120 C 60 84, 90 40, 150 46 C 220 52, 210 130, 270 150 C 330 170, 360 110, 360 60" stroke="var(--color-clay)" stroke-width="14" stroke-linecap="round"/>
+          <circle cx="150" cy="290" r="34" fill="var(--color-ochre)" opacity="0.9"/>
+          <circle cx="230" cy="330" r="20" fill="var(--color-olive)" opacity="0.9"/>
+          <circle cx="90" cy="230" r="12" fill="var(--color-ink)" opacity="0.15"/>
+          <rect x="255" y="255" width="50" height="70" rx="3" fill="none" stroke="var(--color-ink)" stroke-opacity="0.25" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <div class="section-head" style="margin-bottom:22px;">
+          <div class="swatches"><span></span><span></span><span></span></div>
+          <h2 style="margin-top:16px;">À propos</h2>
+        </div>
+        <p>Vous désirez refaire la peinture ou la décoration de votre habitat&nbsp;? Art Déco Yohann Gouron réalise pour vous vos travaux de peinture et de décoration d'intérieur.</p>
+        <p>Faites-nous part de vos projets — un simple appel suffit pour en discuter.</p>
+      </div>
+      <dl class="about-facts">
+        <div class="about-fact">
+          <dt>Burgnac</dt>
+          <dd>Intervention à domicile, route St Martin, 87800</dd>
+        </div>
+        <div class="about-fact">
+          <dt>Lun–Sam</dt>
+          <dd>Ouvert 6 jours sur 7, du lundi au samedi midi</dd>
+        </div>
+        <div class="about-fact">
+          <dt>2 activités</dt>
+          <dd>Peinture (entreprises) et décoration d'intérieur</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="prestations" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="swatches"><span></span><span></span><span></span></div>
+        <h2>Prestations</h2>
+        <p>Deux savoir-faire complémentaires pour transformer un intérieur, du gros œuvre à la finition.</p>
+      </div>
+    </div>
+    <div class="wrap" style="padding:0 28px;">
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M20 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+          </div>
+          <h3>Peinture</h3>
+          <p>Travaux de peinture pour entreprises et particuliers, murs, plafonds et boiseries.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="var(--color-clay)"/><circle cx="17.5" cy="10.5" r=".5" fill="var(--color-clay)"/><circle cx="8.5" cy="7.5" r=".5" fill="var(--color-clay)"/><circle cx="6.5" cy="12.5" r=".5" fill="var(--color-clay)"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </div>
+          <h3>Décoration d'intérieur</h3>
+          <p>Conseils et réalisation pour donner du caractère et de la couleur à votre habitat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="infos">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="swatches"><span></span><span></span><span></span></div>
+        <h2>Infos pratiques</h2>
+        <p>Coordonnées, horaires et moyens de paiement acceptés.</p>
+      </div>
+    </div>
+    <div class="wrap" style="padding:0 28px;">
+      <div class="infos-grid">
+        <div class="infos-card">
+          <h3>Contact</h3>
+          <p class="value">rte St Martin, Burgnac, 87800</p>
+          <a class="value" href="tel:0603046885" style="display:block; margin-top:12px;">06 03 04 68 85</a>
+          <a class="value" href="mailto:artdeco.yohanngouron@gmail.com" style="display:block;">artdeco.yohanngouron@gmail.com</a>
+        </div>
+        <div class="infos-card">
+          <h3>Horaires</h3>
+          <div class="hours-row"><span class="hours-day">Lundi – Vendredi</span><span>08:30 – 18:00</span></div>
+          <div class="hours-row"><span class="hours-day">Samedi</span><span>08:30 – 12:00</span></div>
+          <div class="hours-row"><span class="hours-day">Dimanche</span><span>Fermé</span></div>
+        </div>
+        <div class="infos-card">
+          <h3>Moyens de paiement</h3>
+          <p class="value">Virement bancaire</p>
+          <p class="value">Chèque</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section-alt">
+    <div class="wrap contact-grid">
+      <div class="contact-side">
+        <div class="swatches"><span></span><span></span><span></span></div>
+        <h2 style="margin-top:16px;">Parlons de votre projet</h2>
+        <p>Décrivez-nous vos travaux de peinture ou de décoration, nous revenons vers vous rapidement pour en discuter.</p>
+        <a class="btn btn-primary" href="tel:0603046885">Appeler directement</a>
+      </div>
+
+      <form id="contactForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="nom">Nom *</label>
+            <input id="nom" name="nom" type="text" required>
+          </div>
+          <div class="field">
+            <label for="tel">Téléphone *</label>
+            <input id="tel" name="tel" type="tel" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="field-check">
+          <input id="optin" type="checkbox" required>
+          <label for="optin">En cochant cette case, j'accepte les conditions particulières relatives à l'utilisation de mes données personnelles.</label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">Envoyer le message</button>
+        <p class="form-note">Les données personnelles communiquées sont utilisées par Art Déco Yohann Gouron aux seules fins de répondre à votre demande. Les champs obligatoires sont signalés par un astérisque. <a href="https://artdecoyohanngouron.site-solocal.com/vie-privee" target="_blank" rel="noopener">En savoir plus sur l'utilisation de vos données, dont Bloctel</a>.</p>
+        <div class="confirm-msg" id="confirmMsg">Merci de nous avoir contactés. Nous vous répondrons dès que possible.</div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="foot-brand">Art Déco Yohann Gouron</div>
+        <p class="foot-desc">Peinture et décoration d'intérieur à Burgnac, pour les particuliers et les entreprises.</p>
+      </div>
+      <div>
+        <h4>Coordonnées</h4>
+        <ul>
+          <li>rte St Martin, Burgnac, 87800</li>
+          <li><a href="tel:0603046885">06 03 04 68 85</a></li>
+          <li><a href="mailto:artdeco.yohanngouron@gmail.com">artdeco.yohanngouron@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horaires</h4>
+        <ul>
+          <li>Lun – Ven : 08:30 – 18:00</li>
+          <li>Samedi : 08:30 – 12:00</li>
+          <li>Dimanche : fermé</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Art Déco Yohann Gouron</span>
+      <span>
+        <a href="https://artdecoyohanngouron.site-solocal.com/mentionslegales" target="_blank" rel="noopener">Mentions légales</a> ·
+        <a href="https://artdecoyohanngouron.site-solocal.com/vieprivee" target="_blank" rel="noopener">Vie privée</a> ·
+        <a href="https://artdecoyohanngouron.site-solocal.com/privacy" target="_blank" rel="noopener">Info cookies</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const burger = document.getElementById('burgerBtn');
+  const panel = document.getElementById('mobilePanel');
+  burger.addEventListener('click', () => {
+    const open = panel.classList.toggle('is-open');
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('is-open');
+    burger.classList.remove('is-open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  const form = document.getElementById('contactForm');
+  const confirmMsg = document.getElementById('confirmMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    confirmMsg.classList.add('is-visible');
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
